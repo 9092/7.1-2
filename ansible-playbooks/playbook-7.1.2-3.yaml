@@ -1,6 +1,6 @@
 ---
 - name: Run web server role
-  hosts: ubuntu
+  hosts: webservers
   become: true
   roles:
     - role-web-server

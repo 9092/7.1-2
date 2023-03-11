@@ -1,11 +1,11 @@
 ---
 - name: Create Bash script on remote host using vars
-  hosts: ubuntu
+  hosts: webservers
   become: true
   vars:
     my_script: |
       #!/bin/bash
-      printf "== This text was generated with ansible ==\n"
+      printf "== This text was generated with ansible ==\n\n"
 
   tasks:
     - name: Create script file

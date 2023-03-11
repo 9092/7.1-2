@@ -13,7 +13,4 @@
     unarchive:
       remote_src: true
       src: /tmp/kafka-3.4.0-src.tgz
-      dest: /tmp/  
-  
-  - name: List directory for control
-    shell: "ls /tmp/kafka-3.4.0*"
+      dest: /tmp/

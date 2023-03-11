@@ -32,4 +32,12 @@
     url: "http://{{ ansible_host }}"
     return_content: no
     status_code: 200
+    method: GET
+    return_content: no
+  register: response
+
+- name: Display message if website is available
+  debug:
+    msg: "Website is available!"
+  when: response.status == 200
 
