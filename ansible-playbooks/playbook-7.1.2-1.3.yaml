@@ -1,0 +1,16 @@
+---
+- name: Create Bash script on remote host using vars
+  hosts: ubuntu
+  become: true
+  vars:
+    my_script: |
+      #!/bin/bash
+      printf "== This text was generated with ansible ==\n"
+
+  tasks:
+    - name: Create script file
+      copy:
+        content: "{{ my_script }}"
+        dest: /etc/update-motd.d/99-ansible-script
+        mode: '0755'
+

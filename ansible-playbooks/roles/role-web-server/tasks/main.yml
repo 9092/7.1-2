@@ -1,0 +1,35 @@
+---
+# tasks file for role-web-server
+- name: Install Apache web server
+  become: true
+  apt:
+    update_cache: true
+    name: apache2
+    state: present
+
+- name: Copy index.html template to Apache folder
+  become: true
+  template:
+    src: templates/index.html.j2
+    dest: /var/www/html/index.html
+
+- name: Start Apache web server
+  become: true
+  service:
+    name: apache2
+    state: started
+    enabled: yes
+
+- name: Open TCP port 80 on firewall
+  become: true
+  ufw:
+    rule: allow
+    port: '80'
+    proto: tcp
+
+- name: Check web server status
+  uri:
+    url: "http://{{ ansible_host }}"
+    return_content: no
+    status_code: 200
+

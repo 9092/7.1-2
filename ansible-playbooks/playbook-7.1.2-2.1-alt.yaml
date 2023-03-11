@@ -1,0 +1,12 @@
+Альтернативное решение для 7.1.2-2 
+#    - name: Create /etc/motd file
+#      file:
+#        path: /etc/motd
+#        state: touch
+
+#    - name: Update /etc/motd file
+#      lineinfile:
+#        create: true
+#        state: present
+#        path: /etc/motd
+#        line: "{{ motd_text }}"

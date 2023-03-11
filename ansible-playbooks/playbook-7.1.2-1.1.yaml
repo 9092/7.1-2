@@ -1,0 +1,19 @@
+---
+- name: Playbook to download and extract archive 
+  hosts: webservers
+  become: false
+  tasks: 
+
+  - name: Download kafka-3.4.0 archive
+    get_url:
+      url: https://downloads.apache.org/kafka/3.4.0/kafka-3.4.0-src.tgz
+      dest: /tmp/kafka-3.4.0-src.tgz
+
+  - name: Extract archive
+    unarchive:
+      remote_src: true
+      src: /tmp/kafka-3.4.0-src.tgz
+      dest: /tmp/  
+  
+  - name: List directory for control
+    shell: "ls /tmp/kafka-3.4.0*"
